@@ -15,8 +15,8 @@ class spideroak::aptrepo {
         release           => "${::spideroak::params::apt_repo_release}",
         repos             => "${::spideroak::params::apt_repo_repos}",
         required_packages => undef,
-        key               => 'F1A41D5E',
-        key_source        => 'https://spideroak.com/dist/spideroak-apt-2010.asc',
+        key               => '08C15DD0',
+        key_source        => 'https://spideroak.com/dist/spideroak-apt-2013.asc',
         pin               => '501',
         include_src       => false
     }
