@@ -27,10 +27,10 @@
 #
 # == Examples
 #
-# spideroak::cron { 'joe-daily':
-#   user => 'joe',
-#   email => 'joe@domain.com',
-# }
+#   spideroak::cron { 'joe-daily':
+#       user => 'joe',
+#       email => 'joe@domain.com',
+#   }
 #
 define spideroak::cron
 (

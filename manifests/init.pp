@@ -12,7 +12,7 @@
 #
 # == Examples
 #
-# include spideroak
+#   include spideroak
 #
 # == Authors
 #
@@ -20,8 +20,7 @@
 #
 # == License
 #
-# BSD-lisence
-# See file LICENSE for details
+# BSD-license. See file LICENSE for details.
 #
 class spideroak
 {
