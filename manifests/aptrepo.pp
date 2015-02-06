@@ -6,9 +6,7 @@
 #
 # <https://forge.puppetlabs.com/puppetlabs/apt>
 #
-class spideroak::aptrepo {
-
-    include spideroak::params
+class spideroak::aptrepo inherits spideroak::params {
 
     apt::source { 'spideroak-aptrepo':
         location          => "${::spideroak::params::apt_repo_location}",

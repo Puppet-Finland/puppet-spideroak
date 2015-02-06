@@ -3,7 +3,7 @@
 #
 # Install SpiderOak backup tool
 #
-class spideroak::install {
+class spideroak::install inherits spideroak::params {
 
     package { 'spideroak-spideroak':
         name => 'spideroak',

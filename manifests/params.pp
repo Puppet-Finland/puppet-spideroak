@@ -17,9 +17,7 @@ class spideroak::params {
             $apt_repo_repos = 'restricted'
         }
         default: {
-            $apt_repo_location = 'http://apt.spideroak.com/debian'
-            $apt_repo_release = 'release'
-            $apt_repo_repos = 'non-free'
+            fail("Unsupported OS: ${::osfamily}")
         }
     }
 }

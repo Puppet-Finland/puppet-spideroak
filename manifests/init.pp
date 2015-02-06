@@ -8,7 +8,11 @@
 #
 # == Parameters
 #
-# None at the moment
+# [*manage*]
+#   Whether to manage SpiderOak using this class or not. Valid values 'yes' 
+#   (default) and 'no'.
+# [*crons*]
+#   A hash of spideroak::cron parameters to realize.
 #
 # == Examples
 #
@@ -23,11 +27,17 @@
 # BSD-license. See file LICENSE for details.
 #
 class spideroak
+(
+    $manage = 'yes',
+    $crons = {}
+)
 {
 
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_spideroak', 'true') != 'false' {
+if $manage == 'yes' {
+
     include spideroak::aptrepo
     include spideroak::install
+
+    create_resources('spideroak::cron', $crons)
 }
 }
