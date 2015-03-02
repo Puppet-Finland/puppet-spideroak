@@ -50,8 +50,9 @@ define spideroak::device
         command => "SpiderOak -v --setup=${homedir}/.device.json",
         path => ['/bin', '/usr/bin'],
         creates => "${homedir}/.config/SpiderOak",
-        require => Notify["spideroak-${device_name}"],
+        require => File["spideroak-.device.json-${device_name}"],
         user => $system_username,
         logoutput => true,
+        environment => [ "HOME=${homedir}", "USER=${system_username}", ],
     }
 }
