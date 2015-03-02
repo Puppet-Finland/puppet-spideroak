@@ -12,7 +12,9 @@
 #   Whether to manage SpiderOak using this class or not. Valid values 'yes' 
 #   (default) and 'no'.
 # [*crons*]
-#   A hash of spideroak::cron parameters to realize.
+#   A hash of spideroak::cron resources to realize.
+# [*devices*]
+#   A hash of spideroak::device resources to realize.
 #
 # == Examples
 #
@@ -29,7 +31,8 @@
 class spideroak
 (
     $manage = 'yes',
-    $crons = {}
+    $crons = {},
+    $devices = {}
 )
 {
 
@@ -39,5 +42,6 @@ if $manage == 'yes' {
     include spideroak::install
 
     create_resources('spideroak::cron', $crons)
+    create_resources('spideroak::device', $devices)
 }
 }
