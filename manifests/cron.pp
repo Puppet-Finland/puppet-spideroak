@@ -7,6 +7,10 @@
 #
 # [*status*]
 #   Status of the cronjob. Either 'present' or 'absent'. Defaults to 'present'.
+# [*niceness*]
+#   The nice value for the SpiderOak process. This is useful because SpiderOak 
+#   tends to eat up disproportionate amount of system resources. Defaults to 
+#   '19'.
 # [*user*]
 #   User to run this command as. This will not only affect privileges but also 
 #   which SpiderOak configuration is loaded. Defaults to 'root'.
@@ -35,6 +39,7 @@
 define spideroak::cron
 (
     $status = 'present',
+    $niceness = '19',
     $user = 'root',
     $hour = '12',
     $minute = '0',
@@ -44,7 +49,7 @@ define spideroak::cron
 )
 {
 
-    $base_command = 'SpiderOak --batchmode -v'
+    $base_command = "nice -n ${niceness} SpiderOak --batchmode -v"
 
     if $suppress_output == 'true' {
         $cron_command = "${base_command} > /dev/null"
