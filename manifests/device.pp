@@ -28,7 +28,7 @@ define spideroak::device
 )
 {
 
-    include os::params
+    include ::os::params
 
     $homedir = $system_username ? {
         'root' => '/root',
@@ -36,23 +36,23 @@ define spideroak::device
     }
 
     file { "spideroak-.device.json-${device_name}":
-        ensure => present,
-        name => "${homedir}/.device.json",
+        ensure  => present,
+        name    => "${homedir}/.device.json",
         content => template('spideroak/device.json.erb'),
-        owner => $system_username,
-        mode => 600,
+        owner   => $system_username,
+        mode    => '0600',
         require => Class['spideroak::install'],
     }
 
     # This command can take a lot of time, so we log its output to show the 
     # admin that something is happening.
     exec { "spideroak-setup-${device_name}":
-        command => "SpiderOak -v --setup=${homedir}/.device.json",
-        path => ['/bin', '/usr/bin'],
-        creates => "${homedir}/.config/SpiderOak",
-        require => File["spideroak-.device.json-${device_name}"],
-        user => $system_username,
-        logoutput => true,
+        command     => "SpiderOak -v --setup=${homedir}/.device.json",
+        path        => ['/bin', '/usr/bin'],
+        creates     => "${homedir}/.config/SpiderOak",
+        require     => File["spideroak-.device.json-${device_name}"],
+        user        => $system_username,
+        logoutput   => true,
         environment => [ "HOME=${homedir}", "USER=${system_username}", ],
     }
 }

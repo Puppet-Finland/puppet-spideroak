@@ -44,26 +44,26 @@ define spideroak::cron
     $hour = '12',
     $minute = '0',
     $weekday = '*',
-    $suppress_output = 'true',
+    $suppress_output = true,
     $email = $::servermonitor
 )
 {
 
     $base_command = "nice -n ${niceness} SpiderOak --batchmode -v"
 
-    if $suppress_output == 'true' {
+    if $suppress_output {
         $cron_command = "${base_command} > /dev/null"
     } else {
-        $cron_command = "${base_command}"
+        $cron_command = $base_command
     }
 
     cron { "spideroak-${title}-cron":
-        ensure => $status,
-        command => $cron_command,
-        user => $user,
-        hour => $hour,
-        minute => $minute,
-        weekday => $weekday,
+        ensure      => $status,
+        command     => $cron_command,
+        user        => $user,
+        hour        => $hour,
+        minute      => $minute,
+        weekday     => $weekday,
         environment => "MAILTO=${email}",
     }
 }
