@@ -1,6 +1,6 @@
 {
   "name": "puppetfinland-spideroak",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Puppet-Finland team",
   "license": "BSD license",
   "summary": "Setup SpiderOak",
@@ -8,6 +8,6 @@
   "project_page": "https://github.com/Puppet-Finland/spideroak",
   "dependencies": [
     { "name": "puppetfinland/os", "version_requirement": ">= 0.5.3" },
-    { "name": "puppetlabs/apt", "version_requirement": ">= 1.1.0" }
+    { "name": "puppetlabs/apt", "version_requirement": ">= 2.0.0" }
   ]
 }

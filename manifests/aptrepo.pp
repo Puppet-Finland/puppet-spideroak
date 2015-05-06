@@ -8,14 +8,17 @@
 #
 class spideroak::aptrepo inherits spideroak::params {
 
+    include ::apt
+
     apt::source { 'spideroak-aptrepo':
-        location          => $::spideroak::params::apt_repo_location,
-        release           => $::spideroak::params::apt_repo_release,
-        repos             => $::spideroak::params::apt_repo_repos,
-        required_packages => undef,
-        key               => '08C15DD0',
-        key_source        => 'https://spideroak.com/dist/spideroak-apt-2013.asc',
-        pin               => '501',
-        include_src       => false
+        ensure   => 'present',
+        location => $::spideroak::params::apt_repo_location,
+        release  => $::spideroak::params::apt_repo_release,
+        repos    => $::spideroak::params::apt_repo_repos,
+        pin      => 501,
+        key      => {
+            'id'     => 'FE45E5330B11DCF03247EF49A6FF22FF08C15DD0',
+            'source' => 'https://spideroak.com/dist/spideroak-apt-2013.asc',
+        },
     }
 }
