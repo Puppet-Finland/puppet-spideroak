@@ -12,6 +12,7 @@ class spideroak::params {
             $apt_repo_location = 'http://apt.spideroak.com/debian'
             $apt_repo_release = 'stable'
             $apt_repo_repos = 'non-free'
+            $package_name = 'spideroak'
             $package_provider = undef
             $package_source = undef
         }
@@ -19,10 +20,12 @@ class spideroak::params {
             $apt_repo_location = 'http://apt.spideroak.com/ubuntu-spideroak-hardy'
             $apt_repo_release = 'release'
             $apt_repo_repos = 'restricted'
+            $package_name = 'spideroak'
             $package_provider = undef
             $package_source = undef
         }
         'Fedora': {
+            $package_name = 'SpiderOak'
             $package_provider = 'rpm'
             $package_source = $::hardwaremodel ? {
                 'i686'   => 'https://spideroak.com/getbuild?platform=fedora&arch=i386',
