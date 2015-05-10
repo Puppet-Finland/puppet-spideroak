@@ -38,7 +38,7 @@ class spideroak
 
 if $manage == 'yes' {
 
-    include ::spideroak::aptrepo
+    include ::spideroak::prequisites
     include ::spideroak::install
 
     create_resources('spideroak::cron', $crons)

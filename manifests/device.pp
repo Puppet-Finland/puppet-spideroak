@@ -28,7 +28,7 @@ define spideroak::device
 )
 {
 
-    include ::os::params
+    include ::spideroak::params
 
     $homedir = $system_username ? {
         'root' => '/root',
@@ -53,6 +53,9 @@ define spideroak::device
         require     => File["spideroak-.device.json-${device_name}"],
         user        => $system_username,
         logoutput   => true,
+        # SpiderOak runs can take very long time, so we don't want automatic 
+        # timeouts.
+        timeout     => 0,
         environment => [ "HOME=${homedir}", "USER=${system_username}", ],
     }
 }

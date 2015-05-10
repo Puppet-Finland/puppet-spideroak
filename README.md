@@ -6,6 +6,7 @@ A Puppet module for managing the SpiderOak backup tool
 
 * [Class: spideroak](manifests/init.pp)
 * [Define: spideroak::cron](manifests/cron.pp)
+* [Define: spideroak::device](manifests/device.pp)
 
 # Dependencies
 
@@ -18,9 +19,6 @@ This module has been tested on
 * Debian 7
 * Ubuntu 12.04
 * Ubuntu 14.04
-
-The following operating systems should work with small modifications:
-
-* RedHat/CentOS
+* Fedora 21
 
 For details see [params.pp](manifests/params.pp).
