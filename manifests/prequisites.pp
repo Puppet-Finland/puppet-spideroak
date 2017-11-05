@@ -19,8 +19,8 @@ class spideroak::prequisites inherits spideroak::params {
             repos    => $::spideroak::params::apt_repo_repos,
             pin      => 501,
             key      => {
-                'id'     => 'FE45E5330B11DCF03247EF49A6FF22FF08C15DD0',
-                'source' => 'https://spideroak.com/dist/spideroak-apt-2013.asc',
+                'id'     => '98B1C72BC780EB0A208ACF1F573E3D1C51AE1B3D',
+                'server' => 'keyserver.ubuntu.com',
             },
         }
     }
