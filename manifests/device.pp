@@ -47,7 +47,7 @@ define spideroak::device
     # This command can take a lot of time, so we log its output to show the 
     # admin that something is happening.
     exec { "spideroak-setup-${device_name}":
-        command     => "SpiderOak -v --setup=${homedir}/.device.json",
+        command     => "SpiderOakONE -v --setup=${homedir}/.device.json",
         path        => ['/bin', '/usr/bin'],
         creates     => "${homedir}/.config/SpiderOakONE",
         require     => File["spideroak-.device.json-${device_name}"],
