@@ -49,7 +49,7 @@ define spideroak::cron
 )
 {
 
-    $base_command = "nice -n ${niceness} SpiderOak --batchmode -v"
+    $base_command = "nice -n ${niceness} SpiderOakONE --batchmode -v"
 
     if $suppress_output {
         $cron_command = "${base_command} > /dev/null"
